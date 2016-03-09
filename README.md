@@ -24,3 +24,12 @@ export IMGFLIP_PASSWORD=<your imgflip password>
 
 `hubot meme squirtle <text>` - `Generate a meme with squirtle and text on the bottom`
 `hubot meme templates` - `Get all templates availables`
+
+## How add new templates
+
+Go to https://imgflip.com/memesearch.
+
+![Search image](http://i.imgur.com/4Mb45I0.jpg)
+![Select image](http://i.imgur.com/525EE1O.jpg)
+![Get id of image](http://i.imgur.com/Ucd5zBn.jpg)
+![Add id to json](http://i.imgur.com/2E7zDJz.jpg)
