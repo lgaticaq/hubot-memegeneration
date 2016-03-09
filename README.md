@@ -2,6 +2,8 @@
 
 [![npm version](https://img.shields.io/npm/v/hubot-memegeneration.svg?style=flat-square)](https://www.npmjs.com/package/hubot-memegeneration)
 [![npm downloads](https://img.shields.io/npm/dm/hubot-memegeneration.svg?style=flat-square)](https://www.npmjs.com/package/hubot-memegeneration)
+[![Build Status](https://img.shields.io/travis/lgaticaq/hubot-memegeneration.svg?style=flat-square)](https://travis-ci.org/lgaticaq/hubot-memegeneration)
+[![devDependency Status](https://img.shields.io/david/dev/lgaticaq/hubot-memegeneration.svg?style=flat-square)](https://david-dm.org/lgaticaq/hubot-memegeneration#info=devDependencies)
 [![Join the chat at https://gitter.im/lgaticaq/hubot-memegeneration](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg?style=flat-square)](https://gitter.im/lgaticaq/hubot-memegeneration?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A Hubot script to meme generation with imgflip API
