@@ -18,7 +18,7 @@
 templates = require "./templates.json"
 
 module.exports = (robot) ->
-  robot.respond /meme generate (\w+) ([\w\W\d\s]+)/, (res) ->
+  robot.respond /meme generate ([\d\w\.\-\_]+) ([\w\W\d\s]+)/, (res) ->
     templateName = res.match[1]
     templateId = robot.brain.get("meme:templates:#{templateName}") or templates[templateName]
     text = res.match[2]
