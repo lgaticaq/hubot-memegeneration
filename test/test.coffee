@@ -98,15 +98,15 @@ describe "memegeneration", ->
   context "new template", ->
 
     beforeEach (done) ->
-      room.user.say("user", "hubot meme add test 1010101")
+      room.user.say("user", "hubot meme add test-_.12 1010101")
       setTimeout(done, 100)
 
     it "should reply saved message", ->
       expect(room.messages).to.eql([
-        ["user", "hubot meme add test 1010101"]
-        ["hubot", "Template test saved :ok_hand:"]
+        ["user", "hubot meme add test-_.12 1010101"]
+        ["hubot", "Template test-_.12 saved :ok_hand:"]
       ])
-      expect(room.robot.brain.data._private["meme:templates:test"]).to.eql("1010101")
+      expect(room.robot.brain.data._private["meme:templates:test-_.12"]).to.eql("1010101")
 
   context "generate a meme from brain", ->
     beforeEach (done) ->
@@ -120,12 +120,12 @@ describe "memegeneration", ->
           page_url: "https://imgflip.com/i/10ied8",
           url: "http://i.imgflip.com/10ied8.jpg"
         success: true
-      room.robot.brain.data._private["meme:templates:test"] = "1010101"
-      room.user.say("user", "hubot meme generate test vamo a embriagarno")
+      room.robot.brain.data._private["meme:templates:test-_.12"] = "1010101"
+      room.user.say("user", "hubot meme generate test-_.12 vamo a embriagarno")
       setTimeout(done, 100)
 
     it "should get a meme", ->
       expect(room.messages).to.eql([
-        ["user", "hubot meme generate test vamo a embriagarno"],
+        ["user", "hubot meme generate test-_.12 vamo a embriagarno"],
         ["hubot", "http://i.imgflip.com/10ied8.jpg"]
       ])
