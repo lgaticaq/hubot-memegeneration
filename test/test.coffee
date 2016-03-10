@@ -7,7 +7,16 @@ helper = new Helper("./../src/index.coffee")
 
 describe "memegeneration", ->
   room = null
-  text = "vamo a embriagarno"
+  @timeout(20000)
+  process.env.IMGFLIP_USERNAME = "lgaticaq"
+  process.env.IMGFLIP_PASSWORD = "lgaticaq"
+  apiUrl = "https://api.imgflip.com"
+  apiPath = "/caption_image"
+  query =
+    template_id: 61151469
+    username: "lgaticaq"
+    password: "lgaticaq"
+    text1: "vamo a embriagarno"
 
   beforeEach ->
     room = helper.createRoom()
@@ -17,53 +26,20 @@ describe "memegeneration", ->
     room.destroy()
     nock.cleanAll()
 
-  context "unset environment variables", ->
-    delete process.env.IMGFLIP_USERNAME
-    delete process.env.IMGFLIP_PASSWORD
-
-    beforeEach (done) ->
-      nock("https://api.imgflip.com")
-        .post("/caption_image")
-        .query
-          template_id: 55520613,
-          username: "lgaticaq",
-          password: "lgaticaq",
-          text1: "vamo a embriagarno"
-        .reply 200,
-          error_message: "API error"
-          success: false
-      room.user.say("user", "hubot meme squirtle vamo a embriagarno")
-      setTimeout(done, 100)
-
-    it "should reply to user with a error message", ->
-      expect(room.messages).to.eql([
-        ["user", "hubot meme squirtle vamo a embriagarno"]
-        ["hubot", "@user an error occurred while meme generation"]
-      ])
-
   context "generate a meme", ->
-    process.env.IMGFLIP_USERNAME = "lgaticaq"
-    process.env.IMGFLIP_PASSWORD = "lgaticaq"
 
     beforeEach (done) ->
-      nock("https://api.imgflip.com")
-        .post("/caption_image")
-        .query
-          template_id: 55520613,
-          username: "lgaticaq",
-          password: "lgaticaq",
-          text1: "vamo a embriagarno"
-        .reply 200,
-          data:
-            page_url: "https://imgflip.com/i/10ied8",
-            url: "http://i.imgflip.com/10ied8.jpg"
-          success: true
-      room.user.say("user", "hubot meme squirtle vamo a embriagarno")
+      nock(apiUrl).post(apiPath).query(query).reply 200,
+        data:
+          page_url: "https://imgflip.com/i/10ied8",
+          url: "http://i.imgflip.com/10ied8.jpg"
+        success: true
+      room.user.say("user", "hubot meme generate squirtle vamo a embriagarno")
       setTimeout(done, 100)
 
     it "should get a meme", ->
       expect(room.messages).to.eql([
-        ["user", "hubot meme squirtle vamo a embriagarno"],
+        ["user", "hubot meme generate squirtle vamo a embriagarno"],
         ["hubot", "http://i.imgflip.com/10ied8.jpg"]
       ])
 
@@ -82,53 +58,74 @@ describe "memegeneration", ->
   context "undefined template", ->
 
     beforeEach (done) ->
-      room.user.say("user", "hubot meme undefined vamo a embriagarno")
+      room.user.say("user", "hubot meme generate undefined vamo a embriagarno")
       setTimeout(done, 100)
 
     it "should reply to user with a error message", ->
       expect(room.messages).to.eql([
-        ["user", "hubot meme undefined vamo a embriagarno"]
+        ["user", "hubot meme generate undefined vamo a embriagarno"]
         ["hubot", "@user the template does not exist"]
       ])
 
   context "server error", ->
 
     beforeEach (done) ->
-      nock("https://api.imgflip.com")
-        .post("/caption_image")
-        .query
-          template_id: 55520613,
-          username: "lgaticaq",
-          password: "lgaticaq",
-          text1: "vamo a embriagarno"
-        .replyWithError("Server error")
-      room.user.say("user", "hubot meme squirtle vamo a embriagarno")
+      nock(apiUrl).post(apiPath).query(query).replyWithError("Server error")
+      room.user.say("user", "hubot meme generate squirtle vamo a embriagarno")
       setTimeout(done, 100)
 
     it "should reply to user with a error message", ->
       expect(room.messages).to.eql([
-        ["user", "hubot meme squirtle vamo a embriagarno"]
+        ["user", "hubot meme generate squirtle vamo a embriagarno"]
         ["hubot", "@user an error occurred while meme generation"]
       ])
 
   context "response error", ->
 
     beforeEach (done) ->
-      nock("https://api.imgflip.com")
-        .post("/caption_image")
-        .query
-          template_id: 55520613,
-          username: "lgaticaq",
-          password: "lgaticaq",
-          text1: "vamo a embriagarno"
-        .reply 200,
-          error_message: "API error"
-          success: false
-      room.user.say("user", "hubot meme squirtle vamo a embriagarno")
+      nock(apiUrl).post(apiPath).query(query).reply 200,
+        error_message: "API error"
+        success: false
+      room.user.say("user", "hubot meme generate squirtle vamo a embriagarno")
       setTimeout(done, 100)
 
     it "should reply to user with a error message", ->
       expect(room.messages).to.eql([
-        ["user", "hubot meme squirtle vamo a embriagarno"]
+        ["user", "hubot meme generate squirtle vamo a embriagarno"]
         ["hubot", "@user an error occurred while meme generation"]
+      ])
+
+  context "new template", ->
+
+    beforeEach (done) ->
+      room.user.say("user", "hubot meme add test 1010101")
+      setTimeout(done, 100)
+
+    it "should reply saved message", ->
+      expect(room.messages).to.eql([
+        ["user", "hubot meme add test 1010101"]
+        ["hubot", "Template test saved :ok_hand:"]
+      ])
+      expect(room.robot.brain.data._private["meme:templates:test"]).to.eql("1010101")
+
+  context "generate a meme from brain", ->
+    beforeEach (done) ->
+      nock(apiUrl).post(apiPath).query
+        template_id: 1010101
+        username: "lgaticaq"
+        password: "lgaticaq"
+        text1: "vamo a embriagarno"
+      .reply 200,
+        data:
+          page_url: "https://imgflip.com/i/10ied8",
+          url: "http://i.imgflip.com/10ied8.jpg"
+        success: true
+      room.robot.brain.data._private["meme:templates:test"] = "1010101"
+      room.user.say("user", "hubot meme generate test vamo a embriagarno")
+      setTimeout(done, 100)
+
+    it "should get a meme", ->
+      expect(room.messages).to.eql([
+        ["user", "hubot meme generate test vamo a embriagarno"],
+        ["hubot", "http://i.imgflip.com/10ied8.jpg"]
       ])

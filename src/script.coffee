@@ -8,8 +8,9 @@
 #   IMGFLIP_USERNAME, IMGFLIP_PASSWORD - https://imgflip.com/signup
 #
 # Commands:
-#   hubot meme squirtle <text> - Generate a meme with squirtle and text on the bottom
 #   hubot meme templates - Get all templates availables
+#   hubot meme generate <template_name> <text> - Generate a meme with template_name and text on the bottom
+#   hubot meme template add <name> <id> - Add new template with name and id
 #
 # Author:
 #   lgaticaq
@@ -17,8 +18,10 @@
 templates = require "./templates.json"
 
 module.exports = (robot) ->
-  robot.respond /meme (\w+) ([\w\W\d\s]+)/, (res) ->
-    templateId = templates[res.match[1]]
+  robot.respond /meme generate (\w+) ([\w\W\d\s]+)/, (res) ->
+    templateName = res.match[1]
+    templateId = robot.brain.get("meme:templates:#{templateName}") or templates[templateName]
+    console.log templateId
     text = res.match[2]
     username = process.env.IMGFLIP_USERNAME or "lgaticaq"
     password = process.env.IMGFLIP_PASSWORD or "zuvngqtf"
@@ -48,3 +51,9 @@ module.exports = (robot) ->
 
   robot.respond /meme templates/, (res) ->
     res.send (k for k, v of templates).join(", ")
+
+  robot.respond /meme add (\w+) (\d+)/, (res) ->
+    name = res.match[1]
+    templateId = res.match[2]
+    robot.brain.set "meme:templates:#{name}", templateId
+    res.send "Template #{name} saved :ok_hand:"
