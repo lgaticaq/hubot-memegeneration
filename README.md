@@ -25,7 +25,9 @@ export IMGFLIP_PASSWORD=<your imgflip password>
 ## Examples
 
 `hubot meme templates` - `Get all templates availables`
+
 `hubot meme generate <name> <text>` - `Generate a meme with <name> and text on the bottom`
+
 `hubot meme template add <name> <id>` - `Add new template with name and id`
 
 ## How add new templates
