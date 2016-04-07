@@ -49,7 +49,10 @@ module.exports = (robot) ->
       res.send result.data.url
 
   robot.respond /meme templates/, (res) ->
-    res.send (k for k, v of templates).join(", ")
+    storeTemplates = (k for k, v of templates)
+    brainTemplates = (k.split("meme:templates:")[1] for k, v of robot.brain.data._private when /^meme:templates:/.test(k))
+    _templates = storeTemplates.concat brainTemplates
+    res.send _templates.join(", ")
 
   robot.respond /meme add ([\d\w\.\-\_]+) (\d+)/, (res) ->
     name = res.match[1]
