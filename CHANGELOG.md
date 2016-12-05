@@ -1,3 +1,24 @@
+#### 2.1.1 (2016-12-5)
+
+##### Chores
+
+* **tests:** Complete all tests ([30c0b860](https://github.com/lgaticaq/hubot-memegeneration/commit/30c0b860bfed17fbb69068b3a7e7abc9dfa6a600))
+* **src:** Remove default api key. Fix lint ([7f9a2cf1](https://github.com/lgaticaq/hubot-memegeneration/commit/7f9a2cf1ad0c6adabae2426dc5d9287cf559db0f))
+* **package:**
+  * Add yarn.lock ([2dfe58a8](https://github.com/lgaticaq/hubot-memegeneration/commit/2dfe58a8e692d1a8e3c5d9e9c41a295d62ad2adc))
+  * Update dependencies ([d330b269](https://github.com/lgaticaq/hubot-memegeneration/commit/d330b2690ca5ffb1080ebed2d867f56f23505558))
+  * update nock to version 9.0.0 ([23b88142](https://github.com/lgaticaq/hubot-memegeneration/commit/23b88142d3a493571b8acb26c708f5e3be4fa17b))
+  * update mocha to version 3.0.0 ([68978634](https://github.com/lgaticaq/hubot-memegeneration/commit/68978634ce362536ca04f232383361dc30fe4fcb))
+* **travis:** Add node v7 ([dba608b0](https://github.com/lgaticaq/hubot-memegeneration/commit/dba608b0591a2cd8b6736694d0ea96fad035e1a5))
+* **npm:** Update ignores ([bdf3ad8f](https://github.com/lgaticaq/hubot-memegeneration/commit/bdf3ad8f1deb25a7ef2cd43e560d745f357e50f6))
+* **nvm:** Update node version ([19d370f4](https://github.com/lgaticaq/hubot-memegeneration/commit/19d370f4d60bc711a530db7530988ab8f90a5b93))
+
+##### Documentation Changes
+
+* **CHANGELOG:** Add CHANGELOG ([a79b061a](https://github.com/lgaticaq/hubot-memegeneration/commit/a79b061a0e9757ecc246b8e40ed51c3502405cfe))
+* **README:** Update badges ([153e5fb7](https://github.com/lgaticaq/hubot-memegeneration/commit/153e5fb73133c1e1eb92fef7e49c96526f0b4b3d))
+* **LICENSE:** Update year ([123143c3](https://github.com/lgaticaq/hubot-memegeneration/commit/123143c39601dce5557c765e3a6fa9dc8568366a))
+
 ### 2.1.0 (2016-04-07)
 
 * Add templates in brain ([a641fce](https://github.com/lgaticaq/hubot-memegeneration/commit/a641fce))
