@@ -1,7 +1,6 @@
 Helper = require("hubot-test-helper")
 expect = require("chai").expect
 nock = require("nock")
-templates = require("../src/templates.json")
 
 helper = new Helper("./../src/index.coffee")
 
@@ -46,13 +45,17 @@ describe "memegeneration", ->
   context "list templates availables", ->
 
     beforeEach (done) ->
+      room.robot.brain.data._private["karma"] = "1010100"
+      room.robot.brain.data._private["meme:templates:test-_.12"] = "1010101"
       room.user.say("user", "hubot meme templates")
       setTimeout(done, 100)
 
     it "should get list of templates availables", ->
+      t = "squirtle, charmander, bulbasaur, fry, huemul, money, mufasa, " +
+      "doge, test-_.12"
       expect(room.messages).to.eql([
         ["user", "hubot meme templates"],
-        ["hubot", (k for k, v of templates).join(", ")]
+        ["hubot", t]
       ])
 
   context "undefined template", ->
@@ -106,7 +109,8 @@ describe "memegeneration", ->
         ["user", "hubot meme add test-_.12 1010101"]
         ["hubot", "Template test-_.12 saved :ok_hand:"]
       ])
-      expect(room.robot.brain.data._private["meme:templates:test-_.12"]).to.eql("1010101")
+      brain = room.robot.brain.data._private["meme:templates:test-_.12"]
+      expect(brain).to.eql("1010101")
 
   context "generate a meme from brain", ->
     beforeEach (done) ->
@@ -128,4 +132,19 @@ describe "memegeneration", ->
       expect(room.messages).to.eql([
         ["user", "hubot meme generate test-_.12 vamo a embriagarno"],
         ["hubot", "http://i.imgflip.com/10ied8.jpg"]
+      ])
+
+  context "unset api keys", ->
+    beforeEach (done) ->
+      delete process.env.IMGFLIP_USERNAME
+      delete process.env.IMGFLIP_PASSWORD
+      room.robot.brain.data._private["meme:templates:test-_.12"] = "1010101"
+      room.user.say("user", "hubot meme generate test-_.12 vamo a embriagarno")
+      setTimeout(done, 100)
+
+    it "should get a meme", ->
+      expect(room.messages).to.eql([
+        ["user", "hubot meme generate test-_.12 vamo a embriagarno"],
+        ["hubot", "@user unset the IMGFLIP_USERNAME and IMGFLIP_PASSWORD " +
+        "environment variables"]
       ])
