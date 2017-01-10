@@ -7,10 +7,14 @@
 # Configuration:
 #   IMGFLIP_USERNAME, IMGFLIP_PASSWORD - https://imgflip.com/signup
 #
+# coffeelint: disable=max_line_length
+#
 # Commands:
 #   hubot meme templates - Get all templates availables
 #   hubot meme generate <template_name> <text 1>|<text 2> - Generate a meme with text on the top (text1) and text on the bottom (text2)
 #   hubot meme add <name> <id> - Add new template with name and id
+#
+# coffeelint: enable=max_line_length
 #
 # Author:
 #   lgaticaq
@@ -22,7 +26,7 @@ module.exports = (robot) ->
     templateName = res.match[1]
     rTemplate = "meme:templates:#{templateName}"
     templateId = robot.brain.get(rTemplate) or templates[templateName]
-    text = (res.match[2]).split '|'
+    [top, bottom] = (res.match[2]).split "|"
     username = process.env.IMGFLIP_USERNAME
     password = process.env.IMGFLIP_PASSWORD
     unless templateId?
@@ -32,13 +36,17 @@ module.exports = (robot) ->
       res.reply "unset the IMGFLIP_USERNAME and IMGFLIP_PASSWORD " +
       "environment variables"
       return
-    res.http("https://api.imgflip.com/caption_image")
-    .query
+    query =
       template_id: templateId,
       username: username,
       password: password,
-      text0: text[0]
-      text1: text[1]
+    if bottom
+      query.text0 = top
+      query.text1 = bottom
+    else
+      query.text1 = top
+    res.http("https://api.imgflip.com/caption_image")
+    .query(query)
     .post() (err, response, body) ->
       if err
         res.reply "an error occurred while meme generation"

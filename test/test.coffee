@@ -16,6 +16,12 @@ describe "memegeneration", ->
     username: "lgaticaq"
     password: "lgaticaq"
     text1: "vamo a embriagarno"
+  query2 =
+    template_id: 61151469
+    username: "lgaticaq"
+    password: "lgaticaq"
+    text0: "otra vez"
+    text1: "vamo a embriagarno"
 
   beforeEach ->
     room = helper.createRoom()
@@ -147,4 +153,24 @@ describe "memegeneration", ->
         ["user", "hubot meme generate test-_.12 vamo a embriagarno"],
         ["hubot", "@user unset the IMGFLIP_USERNAME and IMGFLIP_PASSWORD " +
         "environment variables"]
+      ])
+
+  context "generate a meme with top text", ->
+
+    beforeEach (done) ->
+      process.env.IMGFLIP_USERNAME = "lgaticaq"
+      process.env.IMGFLIP_PASSWORD = "lgaticaq"
+      nock(apiUrl).post(apiPath).query(query2).reply 200,
+        data:
+          page_url: "https://imgflip.com/i/10ied9",
+          url: "http://i.imgflip.com/10ied9.jpg"
+        success: true
+      room.user.say(
+        "user", "hubot meme generate squirtle otra vez|vamo a embriagarno")
+      setTimeout(done, 100)
+
+    it "should get a meme", ->
+      expect(room.messages).to.eql([
+        ["user", "hubot meme generate squirtle otra vez|vamo a embriagarno"],
+        ["hubot", "http://i.imgflip.com/10ied9.jpg"]
       ])
