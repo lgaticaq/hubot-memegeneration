@@ -1,3 +1,22 @@
+### 2.2.0 (2017-1-10)
+
+##### Chores
+
+* **package:** Update dependencies ([35334440](https://github.com/lgaticaq/hubot-memegeneration/commit/353344408e510fc17fdfc09b22756f6e351d788a))
+* **logger:** Add warning if not set environment variables ([9a5b217e](https://github.com/lgaticaq/hubot-memegeneration/commit/9a5b217ef1408a094d222fc5bdc2df159fb629a3))
+
+##### Documentation Changes
+
+* **README:** Update help ([a83fe275](https://github.com/lgaticaq/hubot-memegeneration/commit/a83fe275617e7cb722876fa81a6f5bae6008b6f8))
+
+##### Bug Fixes
+
+* **text:** Fix fallback text and add tests ([e0aee872](https://github.com/lgaticaq/hubot-memegeneration/commit/e0aee872308d34fc6c2736169aa81a06de430beb))
+
+##### Other Changes
+
+* **undefined:** adding top line and bottom line support ([38f00697](https://github.com/lgaticaq/hubot-memegeneration/commit/38f006970e7b3ae75fc0dd059334ea3fdfe82980))
+
 #### 2.1.1 (2016-12-5)
 
 ##### Chores
