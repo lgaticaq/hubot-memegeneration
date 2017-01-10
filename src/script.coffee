@@ -23,6 +23,11 @@
 templates = require "./templates.json"
 
 module.exports = (robot) ->
+  unless process.env.IMGFLIP_USERNAME?
+    robot.logger.warning("The IMGFLIP_USERNAME environment variable not set.")
+  unless process.env.IMGFLIP_PASSWORD?
+    robot.logger.warning("The IMGFLIP_PASSWORD environment variable not set.")
+
   robot.respond /meme generate ([\d\w\.\-\_]+) ([\w\W\d\s]+)/, (res) ->
     templateName = res.match[1]
     rTemplate = "meme:templates:#{templateName}"
