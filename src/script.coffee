@@ -9,7 +9,7 @@
 #
 # Commands:
 #   hubot meme templates - Get all templates availables
-#   hubot meme generate <template_name> <text> - Generate a meme
+#   hubot meme generate <template_name> <text 1>|<text 2> - Generate a meme with template_name and text on the top and the bottom
 #   hubot meme add <name> <id> - Add new template with name and id
 #
 # Author:
@@ -20,24 +20,23 @@ templates = require "./templates.json"
 module.exports = (robot) ->
   robot.respond /meme generate ([\d\w\.\-\_]+) ([\w\W\d\s]+)/, (res) ->
     templateName = res.match[1]
-    rTemplate = "meme:templates:#{templateName}"
-    templateId = robot.brain.get(rTemplate) or templates[templateName]
-    text = res.match[2]
-    username = process.env.IMGFLIP_USERNAME
-    password = process.env.IMGFLIP_PASSWORD
+    templateId = robot.brain.get("meme:templates:#{templateName}") or templates[templateName]
+    text = (res.match[2]).split '|'
+    username = process.env.IMGFLIP_USERNAME or "lgaticaq"
+    password = process.env.IMGFLIP_PASSWORD or "zuvngqtf"
     unless templateId?
       res.reply "the template does not exist"
       return
     if not username or not password
-      res.reply "unset the IMGFLIP_USERNAME and IMGFLIP_PASSWORD " +
-      "environment variables"
+      res.reply "unset the IMGFLIP_USERNAME and IMGFLIP_PASSWORD environment variables"
       return
     res.http("https://api.imgflip.com/caption_image")
     .query
       template_id: templateId,
       username: username,
       password: password,
-      text1: text
+      text0: text[0]
+      text1: text[1]
     .post() (err, response, body) ->
       if err
         res.reply "an error occurred while meme generation"
@@ -52,10 +51,7 @@ module.exports = (robot) ->
 
   robot.respond /meme templates/, (res) ->
     storeTemplates = (k for k, v of templates)
-    brainTemplates = []
-    for k, v of robot.brain.data._private
-      if /^meme:templates:/.test(k)
-        brainTemplates.push(k.split("meme:templates:")[1])
+    brainTemplates = (k.split("meme:templates:")[1] for k, v of robot.brain.data._private when /^meme:templates:/.test(k))
     _templates = storeTemplates.concat brainTemplates
     res.send _templates.join(", ")
 
