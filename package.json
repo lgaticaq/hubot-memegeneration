@@ -34,7 +34,7 @@
   "homepage": "https://github.com/lgaticaq/hubot-memegeneration#readme",
   "dependencies": {},
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.0.0",
     "codeclimate-test-reporter": "^0.4.0",
     "coffee-coverage": "^2.0.0",
     "coffee-script": "^1.12.2",
