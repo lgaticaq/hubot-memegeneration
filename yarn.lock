@@ -621,8 +621,8 @@ form-data@~2.1.1:
     mime-types "^2.1.12"
 
 forwarded@~0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.1.tgz#8a4e30c640b05395399a3549c730257728048961"
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
 
 fresh@0.3.0:
   version "0.3.0"
@@ -632,9 +632,9 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-generate-changelog@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/generate-changelog/-/generate-changelog-1.4.0.tgz#07bd5ff7b67a8b3a4c972d31235e7716153da55b"
+generate-changelog@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/generate-changelog/-/generate-changelog-1.5.0.tgz#1ec4f88f58539b174d01e1bf6f993b857b470866"
   dependencies:
     bluebird "^3.0.6"
     commander "^2.9.0"
