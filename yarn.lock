@@ -390,9 +390,9 @@ coffee-script@1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.6.3.tgz#6355d32cf1b04cdff6b484e5e711782b2f0c39be"
 
-coffeelint@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/coffeelint/-/coffeelint-2.0.3.tgz#2753d2b9e730348f7802d712c6ab54162bbfbda7"
+coffeelint@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/coffeelint/-/coffeelint-2.0.5.tgz#de3b67ea0726d99bad59e4dd5b8f6442977d481e"
   dependencies:
     coffeescript "2.0.0"
     glob "^7.0.6"
