@@ -240,8 +240,8 @@ bcrypt-pbkdf@^1.0.0:
     tweetnacl "^0.14.3"
 
 bluebird@^3.0.6:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
 body-parser@~1.13.3:
   version "1.13.3"
@@ -390,9 +390,9 @@ coffee-script@1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.6.3.tgz#6355d32cf1b04cdff6b484e5e711782b2f0c39be"
 
-coffeelint@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/coffeelint/-/coffeelint-2.0.5.tgz#de3b67ea0726d99bad59e4dd5b8f6442977d481e"
+coffeelint@2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/coffeelint/-/coffeelint-2.0.6.tgz#a84d8b6376ec50e869837d66daa0da4f59373412"
   dependencies:
     coffeescript "2.0.0"
     glob "^7.0.6"
