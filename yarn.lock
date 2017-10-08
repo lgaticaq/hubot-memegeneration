@@ -999,13 +999,13 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-hubot-test-helper@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/hubot-test-helper/-/hubot-test-helper-1.7.0.tgz#bcd4663939a8bb8d22f38690621b5573dd5f077c"
+hubot-test-helper@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/hubot-test-helper/-/hubot-test-helper-1.8.0.tgz#84b82b33dce4e89aab4e8673eea74e7f314afa58"
   dependencies:
-    hubot ">=2.6.0 <10 || 0.0.0-development"
+    hubot ">=3.0.0 <10 || 0.0.0-development"
 
-"hubot@>=2.6.0 <10 || 0.0.0-development":
+"hubot@>=3.0.0 <10 || 0.0.0-development":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/hubot/-/hubot-3.0.1.tgz#fe1bca4ece9c4f88f172047d63945b78d3623759"
   dependencies:
