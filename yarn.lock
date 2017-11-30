@@ -268,13 +268,17 @@ coffee-coverage@2.0.1:
     minimatch "^3.0.2"
     pkginfo ">=0.2.3"
 
-coffee-script@1.12.7, coffee-script@>=1.6.2:
-  version "1.12.7"
-  resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
+coffee-script@1.12.8:
+  version "1.12.8"
+  resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.8.tgz#a1fed1fefa21fb5eee6da0248454121ee26058da"
 
 coffee-script@1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.6.3.tgz#6355d32cf1b04cdff6b484e5e711782b2f0c39be"
+
+coffee-script@>=1.6.2:
+  version "1.12.7"
+  resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
 
 coffeelint@2.0.7:
   version "2.0.7"
