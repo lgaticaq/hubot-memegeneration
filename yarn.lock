@@ -689,9 +689,9 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-generate-changelog@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/generate-changelog/-/generate-changelog-1.6.0.tgz#faf302bbc83b147cafe38bfb10487f560f1ad640"
+generate-changelog@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/generate-changelog/-/generate-changelog-1.7.0.tgz#e6321226207d5cbcfe24de39d7ffd65d51698596"
   dependencies:
     bluebird "^3.0.6"
     commander "^2.9.0"
