@@ -276,20 +276,20 @@ coffee-script@1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.6.3.tgz#6355d32cf1b04cdff6b484e5e711782b2f0c39be"
 
-coffeelint@2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/coffeelint/-/coffeelint-2.0.7.tgz#960fd5b9756b845194e9f97a4756e62861216b74"
+coffeelint@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/coffeelint/-/coffeelint-2.1.0.tgz#af65df3634e999d9ac01480736c36d3cd2f5dad8"
   dependencies:
-    coffeescript "~2.0.x"
+    coffeescript "^2.1.0"
     glob "^7.0.6"
     ignore "^3.0.9"
     optimist "^0.6.1"
     resolve "^0.6.3"
     strip-json-comments "^1.0.2"
 
-coffeescript@~2.0.x:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-2.0.2.tgz#065702a484b46194b8c7eb08481e6d4dc38b87c9"
+coffeescript@^2.1.0:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-2.2.1.tgz#39fa2ac2e369f9bf0c651792e1f74552b4081b8e"
 
 combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.5"
