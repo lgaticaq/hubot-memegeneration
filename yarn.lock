@@ -250,17 +250,17 @@ codeclimate-test-reporter@0.5.0:
     lcov-parse "0.0.10"
     request "~2.79.0"
 
-coffee-coverage@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/coffee-coverage/-/coffee-coverage-2.0.1.tgz#78c91a6b2786e85148b1540c236593a3d459cd55"
+coffee-coverage@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/coffee-coverage/-/coffee-coverage-3.0.0.tgz#4e15507fa293fb12bb4e4df3e0af551253ca07cb"
   dependencies:
     argparse "^1.0.2"
-    coffee-script ">=1.6.2"
+    coffeescript "^2.0.2"
     lodash "^4.14.0"
     minimatch "^3.0.2"
     pkginfo ">=0.2.3"
 
-coffee-script@1.12.7, coffee-script@>=1.6.2:
+coffee-script@1.12.7:
   version "1.12.7"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
 
@@ -278,6 +278,10 @@ coffeelint@2.1.0:
     optimist "^0.6.1"
     resolve "^0.6.3"
     strip-json-comments "^1.0.2"
+
+coffeescript@^2.0.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-2.2.2.tgz#e693fefdb3d69017e13d24b8d6a658f8f4a7c1a9"
 
 coffeescript@^2.1.0:
   version "2.2.1"
