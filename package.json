@@ -4,17 +4,17 @@
   "description": "A Hubot script to meme generation with imgflip API",
   "main": "src",
   "scripts": {
-    "pretest": "coffeelint src test",
-    "test": "mocha --compilers coffee:coffee-script/register --require coffee-coverage/register-istanbul",
-    "posttest": "istanbul report text-summary lcov",
-    "coveralls": "coveralls < coverage/lcov.info",
-    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info",
+    "lint": "eslint --fix .",
+    "format": "prettier-standard 'src/**/*.js' 'test/**/*.js'",
+    "precommit": "lint-staged",
+    "pretest": "npm run lint -s && npm run format -s",
+    "test": "istanbul cover _mocha test -- --exit",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags && npm publish",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags && npm publish",
     "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags && npm publish"
   },
   "engines": {
-    "node": ">=0.12"
+    "node": ">=8"
   },
   "repository": {
     "type": "git",
@@ -35,15 +35,50 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "4.1.2",
-    "codeclimate-test-reporter": "0.5.0",
-    "coffee-coverage": "2.0.1",
-    "coffee-script": "1.12.7",
-    "coffeelint": "2.1.0",
-    "coveralls": "3.0.0",
+    "eslint": "4.19.1",
+    "eslint-config-standard": "11.0.0",
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-promise": "3.7.0",
+    "eslint-plugin-standard": "3.1.0",
     "generate-changelog": "1.7.1",
     "hubot-test-helper": "1.9.0",
+    "husky": "0.14.3",
     "istanbul": "0.4.5",
+    "lint-staged": "7.0.5",
     "mocha": "5.1.1",
-    "nock": "9.2.5"
+    "nock": "9.2.5",
+    "prettier-standard": "8.0.1"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "rules": {
+      "no-console": [
+        "error"
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "coverage"
+  ],
+  "lint-staged": {
+    "linters": {
+      "src/**/*.js": [
+        "eslint --fix",
+        "prettier-standard",
+        "git add"
+      ],
+      "test/**/*.js": [
+        "eslint --fix",
+        "prettier-standard",
+        "git add"
+      ]
+    }
+  },
+  "renovate": {
+    "automerge": "minor",
+    "extends": [
+      ":library"
+    ]
   }
 }
