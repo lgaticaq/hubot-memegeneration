@@ -6,7 +6,6 @@
   "scripts": {
     "lint": "eslint --fix .",
     "format": "prettier-standard 'src/**/*.js' 'test/**/*.js'",
-    "precommit": "lint-staged",
     "pretest": "npm run lint -s && npm run format -s",
     "test": "istanbul cover _mocha test -- --exit",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags && npm publish",
@@ -43,7 +42,7 @@
     "eslint-plugin-standard": "4.0.1",
     "generate-changelog": "1.8.0",
     "hubot-test-helper": "1.9.0",
-    "husky": "0.14.3",
+    "husky": "3.1.0",
     "istanbul": "0.4.5",
     "lint-staged": "9.4.3",
     "mocha": "6.2.2",
@@ -61,6 +60,11 @@
   "eslintIgnore": [
     "coverage"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "{src,test}/**/*.js": [
       "eslint --fix",
